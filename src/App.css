@@ -431,3 +431,7 @@ a:hover {
   color: var(--color-dark);
   font-size: 1.5rem;
 }
+
+.toastBody {
+  font-size: 2rem;
+}

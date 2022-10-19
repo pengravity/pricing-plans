@@ -1,6 +1,15 @@
 import './Sub.css';
 
-const Sub = ({ plan, theme, price, isBasic, isPro, isMaster, yearly }) => {
+const Sub = ({
+  plan,
+  theme,
+  price,
+  isBasic,
+  isPro,
+  isMaster,
+  yearly,
+  onBuy,
+}) => {
   return (
     <div className='price-box --card'>
       <div className={`box --p2 ${theme}`}>
@@ -32,7 +41,9 @@ const Sub = ({ plan, theme, price, isBasic, isPro, isMaster, yearly }) => {
           {isMaster && <li>Push Notifications</li>}
           {isMaster && <li>Priority Support</li>}
         </ul>
-        <button className={`btn ${theme}`}>Buy Now</button>
+        <button onClick={onBuy} className={`btn ${theme}`}>
+          Buy Now
+        </button>
       </div>
     </div>
   );

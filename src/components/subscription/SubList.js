@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import './SubList.css';
 import Sub from './Sub';
@@ -59,6 +60,7 @@ const SubList = () => {
             price={basic}
             isBasic={true}
             yearly={yearly}
+            onBuy={() => toast.success('You bought a plan for $' + basic)}
           />
           <Sub
             plan={'Pro'}
@@ -66,6 +68,7 @@ const SubList = () => {
             price={pro}
             isPro={true}
             yearly={yearly}
+            onBuy={() => toast.success('You bought a plan for $' + pro)}
           />
           <Sub
             plan={'Master'}
@@ -73,6 +76,7 @@ const SubList = () => {
             price={master}
             isMaster={true}
             yearly={yearly}
+            onBuy={() => toast.success('You bought a plan for $' + master)}
           />
         </div>
       </div>
