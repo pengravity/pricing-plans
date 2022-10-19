@@ -1,7 +1,13 @@
+import { useState } from 'react';
+
 import './SubList.css';
 import Sub from './Sub';
 
 const SubList = () => {
+  const [basic, setBasic] = useState(10);
+  const [pro, setPro] = useState(20);
+  const [master, setMaster] = useState(30);
+
   return (
     <section className='main'>
       <div className='container --center-all '>
@@ -21,9 +27,14 @@ const SubList = () => {
         </div>
 
         <div className='sub-plans'>
-          <Sub plan={'Basic'} theme={'theme1'} price={'10'} />
-          <Sub plan={'Pro'} theme={'theme2'} price={'20'} />
-          <Sub plan={'Master'} theme={'theme3'} price={'30'} />
+          <Sub plan={'Basic'} theme={'theme1'} price={basic} isBasic={true} />
+          <Sub plan={'Pro'} theme={'theme2'} price={pro} isPro={true} />
+          <Sub
+            plan={'Master'}
+            theme={'theme3'}
+            price={master}
+            isMaster={true}
+          />
         </div>
       </div>
     </section>
