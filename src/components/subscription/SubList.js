@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './SubList.css';
 import Sub from './Sub';
@@ -13,6 +13,23 @@ const SubList = () => {
   const handleClick = () => {
     setYearly(!yearly);
   };
+
+  // discount 0.3 means 30%
+  const calcYearly = (pricePerMonth, discount) => {
+    return pricePerMonth * 12 * (1 - discount);
+  };
+
+  useEffect(() => {
+    if (yearly) {
+      setBasic(Math.round(calcYearly(basic, 0.3)));
+      setPro(Math.round(calcYearly(pro, 0.3)));
+      setMaster(Math.round(calcYearly(master, 0.3)));
+    } else {
+      setBasic(10);
+      setPro(20);
+      setMaster(30);
+    }
+  }, [yearly]);
 
   return (
     <section className='main'>
@@ -39,21 +56,21 @@ const SubList = () => {
           <Sub
             plan={'Basic'}
             theme={'theme1'}
-            price={yearly ? Math.round(basic * 12 * 0.7) : basic}
+            price={basic}
             isBasic={true}
             yearly={yearly}
           />
           <Sub
             plan={'Pro'}
             theme={'theme2'}
-            price={yearly ? Math.round(pro * 12 * 0.7) : pro}
+            price={pro}
             isPro={true}
             yearly={yearly}
           />
           <Sub
             plan={'Master'}
             theme={'theme3'}
-            price={yearly ? Math.round(master * 12 * 0.7) : master}
+            price={master}
             isMaster={true}
             yearly={yearly}
           />
